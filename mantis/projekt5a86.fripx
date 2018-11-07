@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<umlproject xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/umlproject.xsd" saveversion="1.0">
+  <metamodel>
+    <uri>http://umlfri.kst.fri.uniza.sk/metamodel/uml.frim</uri>
+    <version>1.4.0</version>
+  </metamodel>
+  <objects>
+    <object type="StartState" id="0">
+      <dict>
+        <text name="note"></text>
+        <text name="name">Server (port)</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="1">
+      <dict>
+        <text name="note"></text>
+        <text name="name">result = sum(delta) / len(delta)</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Package" id="2">
+      <dict>
+        <text name="note"></text>
+        <text name="scope">Private</text>
+        <text name="abstract">False</text>
+        <text name="name">client_old</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="EndState" id="3">
+      <dict>
+        <text name="note"></text>
+        <text name="name">End</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="4">
+      <dict>
+        <text name="note"></text>
+        <text name="name">delta = [ ]</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="5">
+      <dict>
+        <text name="note"></text>
+        <text name="name">sock = socket(INET, DGRAM)</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="6">
+      <dict>
+        <text name="note"></text>
+        <text name="name">sock.bind('', port)</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="7">
+      <dict>
+        <text name="note"></text>
+        <text name="name">pack = sock.recv()</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="StartState" id="8">
+      <dict>
+        <text name="note">def Synchronize(address, count):
+    delta = []
+    sock = socket(INET, DGRAM)
+    for i in range(count+1):
+        time_A = time()
+        sock.sendto(Packet(REQUEST), address)
+        pack = Packet(sock.recv())
+        time_D = time()
+        if i &gt; 0:
+            delta.append((sock.time_B + sock.time_C - time_D - time_A) / 2)
+    return sum(delta) / len(delta)</text>
+        <text name="name">Client (address, count)</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="EndState" id="9">
+      <dict>
+        <text name="note"></text>
+        <text name="name">End</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Decision" id="10">
+      <dict>
+        <text name="note"></text>
+        <text name="abstract">False</text>
+        <text name="name">pack.type == RQ</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="11">
+      <dict>
+        <text name="note"></text>
+        <text name="name">sock = socket(INET, DGRAM)</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="12">
+      <dict>
+        <text name="note"></text>
+        <text name="name">pack.C = time</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="13">
+      <dict>
+        <text name="note"></text>
+        <text name="name">pack.B = B</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Package" id="14">
+      <dict>
+        <text name="note"></text>
+        <text name="scope">Private</text>
+        <text name="abstract">False</text>
+        <text name="name">Project</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="15">
+      <dict>
+        <text name="note"></text>
+        <text name="name">pack.type = RESP</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="16">
+      <dict>
+        <text name="note"></text>
+        <text name="name">D = time()</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="17">
+      <dict>
+        <text name="note"></text>
+        <text name="name">sock.sendto( RQ, address )</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="18">
+      <dict>
+        <text name="note"></text>
+        <text name="name">A = time()</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Decision" id="19">
+      <dict>
+        <text name="note"></text>
+        <text name="abstract">False</text>
+        <text name="name">Active()</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="20">
+      <dict>
+        <text name="note"></text>
+        <text name="name">delta.append(pack.B + pack.C - A - D</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Decision" id="21">
+      <dict>
+        <text name="note"></text>
+        <text name="abstract">False</text>
+        <text name="name">i &lt; count</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="22">
+      <dict>
+        <text name="note"></text>
+        <text name="name">B = time()</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="23">
+      <dict>
+        <text name="note"></text>
+        <text name="name">sock.sendto(pack, pack.from)</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Note" id="24">
+      <dict>
+        <text name="note">REQUEST -&gt; to server</text>
+        <text name="name">poziadavka</text>
+      </dict>
+    </object>
+    <object type="Activity" id="25">
+      <dict>
+        <text name="note"></text>
+        <text name="name">i = 0</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+    <object type="Activity" id="26">
+      <dict>
+        <text name="note"></text>
+        <text name="name">pack = sock.recv()</text>
+        <text name="stereotype"></text>
+      </dict>
+    </object>
+  </objects>
+  <connections>
+    <connection source="1" destination="3" type="ActivityFlow" id="27">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="5" destination="25" type="ActivityFlow" id="28">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="8" destination="4" type="ActivityFlow" id="29">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="16" destination="20" type="ActivityFlow" id="30">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="21" destination="18" type="ActivityFlow" id="31">
+      <dict>
+        <text name="note"></text>
+        <text name="name">True</text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="20" destination="21" type="ActivityFlow" id="32">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="17" destination="26" type="ActivityFlow" id="33">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="17" destination="24" type="Note Link" id="34">
+      <dict/>
+    </connection>
+    <connection source="23" destination="19" type="ActivityFlow" id="35">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="25" destination="21" type="ActivityFlow" id="36">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="21" destination="1" type="ActivityFlow" id="37">
+      <dict>
+        <text name="note"></text>
+        <text name="name">False</text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="19" destination="9" type="ActivityFlow" id="38">
+      <dict>
+        <text name="note"></text>
+        <text name="name">False</text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="11" destination="6" type="ActivityFlow" id="39">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="0" destination="11" type="ActivityFlow" id="40">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="26" destination="16" type="ActivityFlow" id="41">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="4" destination="5" type="ActivityFlow" id="42">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="7" destination="22" type="ActivityFlow" id="43">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="13" destination="12" type="ActivityFlow" id="44">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="10" destination="15" type="ActivityFlow" id="45">
+      <dict>
+        <text name="note"></text>
+        <text name="name">True</text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="15" destination="13" type="ActivityFlow" id="46">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="18" destination="17" type="ActivityFlow" id="47">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="19" destination="7" type="ActivityFlow" id="48">
+      <dict>
+        <text name="note"></text>
+        <text name="name">True</text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="22" destination="10" type="ActivityFlow" id="49">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="12" destination="23" type="ActivityFlow" id="50">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+    <connection source="24" destination="7" type="Note Link" id="51">
+      <dict/>
+    </connection>
+    <connection source="6" destination="19" type="ActivityFlow" id="52">
+      <dict>
+        <text name="note"></text>
+        <text name="name"></text>
+        <text name="stereotype"></text>
+      </dict>
+    </connection>
+  </connections>
+  <projecttree>
+    <node id="14">
+      <childs>
+        <node id="2">
+          <childs>
+            <node id="8">
+              <diagrams/>
+            </node>
+            <node id="4">
+              <diagrams/>
+            </node>
+            <node id="5">
+              <diagrams/>
+            </node>
+            <node id="21">
+              <diagrams/>
+            </node>
+            <node id="25">
+              <diagrams/>
+            </node>
+            <node id="18">
+              <diagrams/>
+            </node>
+            <node id="17">
+              <diagrams/>
+            </node>
+            <node id="26">
+              <diagrams/>
+            </node>
+            <node id="16">
+              <diagrams/>
+            </node>
+            <node id="20">
+              <diagrams/>
+            </node>
+            <node id="1">
+              <diagrams/>
+            </node>
+            <node id="3">
+              <diagrams/>
+            </node>
+            <node id="0">
+              <diagrams/>
+            </node>
+            <node id="11">
+              <diagrams/>
+            </node>
+            <node id="6">
+              <diagrams/>
+            </node>
+            <node id="7">
+              <diagrams/>
+            </node>
+            <node id="19">
+              <diagrams/>
+            </node>
+            <node id="10">
+              <diagrams/>
+            </node>
+            <node id="22">
+              <diagrams/>
+            </node>
+            <node id="15">
+              <diagrams/>
+            </node>
+            <node id="13">
+              <diagrams/>
+            </node>
+            <node id="12">
+              <diagrams/>
+            </node>
+            <node id="23">
+              <diagrams/>
+            </node>
+            <node id="9">
+              <diagrams/>
+            </node>
+            <node id="24">
+              <diagrams/>
+            </node>
+          </childs>
+          <diagrams>
+            <diagram type="Activity diagram" name="Activity diagram 1">
+              <element y="1145" dw="0" id="16" dh="0" x="243"/>
+              <element y="32" dw="0" id="8" dh="0" x="201"/>
+              <element y="102" dw="0" id="4" dh="0" x="244"/>
+              <element y="194" dw="0" id="5" dh="0" x="170"/>
+              <element y="370" dw="0" id="21" dh="0" x="241"/>
+              <element y="277" dw="0" id="25" dh="0" x="264"/>
+              <element y="453" dw="0" id="18" dh="0" x="244"/>
+              <element y="539" dw="0" id="17" dh="0" x="176"/>
+              <element y="1063" dw="0" id="26" dh="0" x="208"/>
+              <element y="1232" dw="0" id="20" dh="0" x="137"/>
+              <element y="1341" dw="0" id="1" dh="0" x="163"/>
+              <element y="1435" dw="0" id="3" dh="0" x="268"/>
+              <element y="34" dw="0" id="0" dh="0" x="776"/>
+              <element y="98" dw="0" id="11" dh="0" x="709"/>
+              <element y="233" dw="0" id="6" dh="0" x="756"/>
+              <element y="540" dw="0" id="7" dh="0" x="750"/>
+              <element y="349" dw="0" id="19" dh="0" x="785"/>
+              <element y="702" dw="0" id="10" dh="0" x="750"/>
+              <element y="615" dw="0" id="22" dh="0" x="787"/>
+              <element y="820" dw="0" id="15" dh="0" x="755"/>
+              <element y="903" dw="0" id="13" dh="0" x="783"/>
+              <element y="981" dw="0" id="12" dh="0" x="772"/>
+              <element y="1081" dw="0" id="23" dh="0" x="707"/>
+              <element y="406" dw="0" id="9" dh="0" x="1013"/>
+              <element y="551" dw="0" id="24" dh="0" x="513"/>
+              <connection id="29">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="42">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="28">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="36">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="31">
+                <label dist="21.0647579673" num="0" angle="4.71238898038" pos="0.444319561642" idx="0"/>
+              </connection>
+              <connection id="47">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="33">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="41">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="30">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="32">
+                <point y="830" x="17"/>
+                <point y="393" x="19"/>
+                <label dist="0.0" num="0" angle="0.0" pos="0.589250352761" idx="1"/>
+              </connection>
+              <connection id="37">
+                <point y="391" x="481"/>
+                <point y="887" x="480"/>
+                <point y="888" x="285"/>
+                <label dist="10.6134197893" num="0" angle="4.71238898038" pos="0.259379156689" idx="0"/>
+              </connection>
+              <connection id="27">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="40">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="39">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="52">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="38">
+                <point y="370" x="1029"/>
+                <label dist="10.5" num="0" angle="4.71238898038" pos="0.205696202532" idx="0"/>
+              </connection>
+              <connection id="48">
+                <label dist="20.80229057" num="0" angle="4.71238898038" pos="0.112207277098" idx="0"/>
+              </connection>
+              <connection id="34"/>
+              <connection id="51"/>
+              <connection id="43">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="49">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="45">
+                <label dist="29.0" num="0" angle="4.71238898038" pos="0.513157894737" idx="0"/>
+              </connection>
+              <connection id="46">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="44">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="50">
+                <label dist="0.0" num="0" angle="0.0" pos="0.5" idx="0"/>
+              </connection>
+              <connection id="35">
+                <point y="1163" x="828"/>
+                <point y="1163" x="638"/>
+                <point y="365" x="639"/>
+                <label dist="0.0" num="0" angle="1.56954319462" pos="0.551778489607" idx="2"/>
+              </connection>
+            </diagram>
+          </diagrams>
+        </node>
+      </childs>
+      <diagrams/>
+    </node>
+  </projecttree>
+  <counters>
+    <count id="Package" value="1"/>
+    <count id="Decision" value="3"/>
+    <count id="Object" value="0"/>
+    <count id="VerticalSynchronization" value="0"/>
+    <count id="Actor" value="0"/>
+    <count id="Class" value="0"/>
+    <count id="Note" value="1"/>
+    <count id="StartState" value="2"/>
+    <count id="State" value="0"/>
+    <count id="UseCase" value="0"/>
+    <count id="HorizontalSynchronization" value="0"/>
+    <count id="Activity" value="17"/>
+    <count id="EndState" value="2"/>
+    <count id="State diagram" value="0"/>
+    <count id="Class diagram" value="0"/>
+    <count id="Use Case diagram" value="0"/>
+    <count id="Activity diagram" value="1"/>
+  </counters>
+</umlproject>

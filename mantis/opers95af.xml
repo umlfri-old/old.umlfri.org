@@ -1,0 +1,17 @@
+<Domain id="opers">
+   <List>
+       <Struct>
+           <Item name="name" type="str" />
+           <Item name="type" type="str" />
+           <Item name="parameters">
+               <List>
+                   <Struct>
+                       <Item name="name" type="str" />
+                       <Item name="type" type="str" />
+                       <Item name="default" type="str" />
+                   </Struct>
+               </List>
+           </Item>
+       </Struct>
+   </List>
+</Domain>

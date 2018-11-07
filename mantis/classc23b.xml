@@ -1,0 +1,16 @@
+<ElementType id="Class" xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd">
+        ....
+    </Connections>
+    
+    <Aliases>
+        <Alias id="Interface">
+            <Attribute name="stereotype" value="interface" />
+        </Alias>
+        <Alias id="Table">
+            <Attribute name="stereotype" value="table" />
+        </Alias>
+    </Aliases>
+    
+    <Appearance>
+        ...
+</ElementType>
